@@ -1,24 +1,28 @@
-<h1 id="tableLabel">Weather forecast</h1>
+<h1 id="tableLabel">Weather dropdown</h1>
 
 <p>This component demonstrates fetching data from the server.</p>
 
-<p *ngIf="!forecasts"><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationangular">https://aka.ms/jspsintegrationangular</a> for more details.</em></p>
+<p *ngIf="!dropdownDtos"><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationangular">https://aka.ms/jspsintegrationangular</a> for more details.</em></p>
 
-<table *ngIf="forecasts">
+<table *ngIf="dropdownDtos">
     <thead>
         <tr>
-            <th>Datessss</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
+            <th>Name</th>
+            <th>ID</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let forecast of forecasts">
-            <td>{{ forecast.date }}</td>
-            <td>{{ forecast.temperatureC }}</td>
-            <td>{{ forecast.temperatureF }}</td>
-            <td>{{ forecast.summary }}</td>
+      <tr>
+        <div>
+        </div>
+      </tr>
+        <tr *ngFor="let planetDropdown of dropdownDtos">
+          <td>{{ planetDropdown.name }}</td>
+          <td>{{ planetDropdown.id }}</td>
         </tr>
     </tbody>
 </table>
+
+<select [ngModel]="selectedPlanet" (ngModelChange)="onPlanetSelect($event)" name="sel3">
+  <option [ngValue]="planetDropdown.id" *ngFor="let planetDropdown of dropdownDtos">{{planetDropdown.name}}</option>
+</select>

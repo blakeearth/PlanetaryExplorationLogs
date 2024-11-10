@@ -1,37 +1,30 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { PlanetDropdownDTO } from './features/planets/dtos/planet-dropdown.dto';
+import { Planet } from './features/planets/models/planet.model';
+import { PlanetService } from './features/planets/services/planet.service';
 
-interface WeatherForecast {
-  date: string;
-  temperatureC: number;
-  temperatureF: number;
-  summary: string;
-}
+   @Component({
+     selector: 'app-root',
+     templateUrl: './app.component.html',
+     styleUrls: ['./app.component.css']
+   })
+   export class AppComponent implements OnInit {
+     public dropdownDtos: PlanetDropdownDTO[] = [];
+     public selectedPlanet: Planet | undefined;
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
-export class AppComponent implements OnInit {
-  public forecasts: WeatherForecast[] = [];
+     constructor(private planetService: PlanetService) {}
 
-  constructor(private http: HttpClient) {}
+     ngOnInit() {
+       this.loadPlanetData();
+     }
 
-  ngOnInit() {
-    this.getForecasts();
-  }
+     loadPlanetData() {
+       this.planetService.getPlanetDropdown().subscribe((v) => this.dropdownDtos = v);
+     }
 
-  getForecasts() {
-    this.http.get<WeatherForecast[]>('/api/planet/dropdown').subscribe(
-      (result) => {
-        this.forecasts = result;
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  }
+     onPlanetSelect(id: number) {
+       this.planetService.getPlanet(id).subscribe((v) => this.selectedPlanet = v);
+     }
 
-  title = 'planetaryexplorationlogs.client';
-}
+     title = 'planetaryexplorationlogs.client';
+   }
