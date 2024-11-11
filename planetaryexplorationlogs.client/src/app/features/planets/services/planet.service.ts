@@ -5,6 +5,7 @@ import { APIService } from '../../../core/services/api.service';
 import { ErrorHandlerService } from '../../../core/services/error-handler.service';
 import { PlanetDropdownDTO } from '../dtos/planet-dropdown.dto';
 import { Planet } from '../models/planet.model';
+import { Mission } from '../../missions/models/mission.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,10 @@ export class PlanetService extends APIService {
 
   getPlanetDropdown(): Observable<PlanetDropdownDTO[]> {
     return this.get<PlanetDropdownDTO[]>(`${this.API_PATH}/dropdown`);
+  }
+
+  getPlanetMissions(planetId: number): Observable<Mission[]> {
+    return this.get<Mission[]>(`${this.API_PATH}/${planetId}/missions`);
   }
 
   getPlanet(id: number): Observable<Planet> {

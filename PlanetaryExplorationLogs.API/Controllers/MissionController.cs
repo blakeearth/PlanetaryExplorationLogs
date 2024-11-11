@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PlanetaryExplorationLogs.API.Data.Context;
 using PlanetaryExplorationLogs.API.Data.Models;
+using PlanetaryExplorationLogs.API.Requests.Queries.Missions.GetMission;
 using PlanetaryExplorationLogs.API.Requests.Queries.Missions.GetMissions;
 using PlanetaryExplorationLogs.API.Utility.Patterns;
 
@@ -28,8 +29,8 @@ namespace PlanetaryExplorationLogs.API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<RequestResult<Mission>>> GetMission(int id)
         {
-            // Retrieve a specific mission by ID.
-            return StatusCode(501); // Not Implemented
+            var query = new GetMission_Query(_context, id);
+            return await query.ExecuteAsync();
         }
 
         // POST: api/mission
