@@ -12,10 +12,6 @@
         </tr>
     </thead>
     <tbody>
-      <tr>
-        <div>
-        </div>
-      </tr>
         <tr *ngFor="let planetDropdown of dropdownDtos">
           <td>{{ planetDropdown.name }}</td>
           <td>{{ planetDropdown.id }}</td>
@@ -23,6 +19,15 @@
     </tbody>
 </table>
 
-<select [ngModel]="selectedPlanet" (ngModelChange)="onPlanetSelect($event)" name="sel3">
-  <option [ngValue]="planetDropdown.id" *ngFor="let planetDropdown of dropdownDtos">{{planetDropdown.name}}</option>
+<select [(ngModel)]="selectedPlanetDropdown" (ngModelChange)="onPlanetSelect()">
+  <option [ngValue]="planetDropdown" *ngFor="let planetDropdown of dropdownDtos">{{planetDropdown.name}}</option>
 </select>
+
+<div *ngIf="selectedPlanet">
+  <span>{{selectedPlanet.name}}</span>
+  <span>{{selectedPlanet.climate}}</span>
+  <span>{{selectedPlanet.terrain}}</span>
+  <span>{{selectedPlanet.population}}</span>
+</div>
+
+<app-missions *ngIf="selectedPlanet" [planetId]="selectedPlanet.id"></app-missions>

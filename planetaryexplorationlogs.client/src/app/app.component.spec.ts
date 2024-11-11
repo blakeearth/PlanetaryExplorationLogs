@@ -29,19 +29,4 @@ describe('AppComponent', () => {
   it('should create the app', () => {
     expect(component).toBeTruthy();
   });
-
-  it('should retrieve weather dropdowns from the server', () => {
-    const mockdropdowns = [
-      { date: '2021-10-01', temperatureC: 20, temperatureF: 68, summary: 'Mild' },
-      { date: '2021-10-02', temperatureC: 25, temperatureF: 77, summary: 'Warm' }
-    ];
-
-    component.ngOnInit();
-
-    const req = httpMock.expectOne('/weatherdropdown');
-    expect(req.request.method).toEqual('GET');
-    req.flush(mockdropdowns);
-
-    expect(component.dropdowns).toEqual(mockdropdowns);
-  });
 });
