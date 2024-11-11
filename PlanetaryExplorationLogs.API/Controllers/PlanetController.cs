@@ -28,6 +28,14 @@ namespace PlanetaryExplorationLogs.API.Controllers
             return await query.ExecuteAsync();
         }
 
+        // GET: api/planet/{id}
+        [HttpGet("{id}")]
+        public async Task<ActionResult<RequestResult<PlanetFormDto>>> GetPlanet(int id)
+        {
+            var query = new GetPlanet_Query(_context, id);
+            return await query.ExecuteAsync();
+        }
+
         // POST: api/planet
         [HttpPost]
         public async Task<ActionResult<RequestResult<int>>> CreatePlanet([FromBody] PlanetFormDto planet)
