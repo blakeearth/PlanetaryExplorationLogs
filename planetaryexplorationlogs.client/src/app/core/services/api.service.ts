@@ -1,15 +1,18 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map } from 'rxjs';
 import { ErrorHandlerService } from './error-handler.service';
 
-interface APIResponse<T> {
+interface RequestResult<T> {
   success: boolean;
   message: string;
   statusCode: number;
   data: T;
 }
 
+@Injectable({
+  providedIn: 'root'
+})
 export class APIService {
   constructor(
     protected http: HttpClient,
@@ -17,9 +20,10 @@ export class APIService {
   ) { }
 
   protected get<T>(url: string): Observable<T> {
-    return this.http.get<APIResponse<T>>(url).pipe(
-      map(response => response.data),
-      catchError(error => {
+    console.log(url);
+    return this.http.get<RequestResult<T>>(url).pipe(
+      map((response: { data: any; }) => response.data),
+      catchError((error: HttpErrorResponse) => {
         this.errorHandler.handleError(error);
         throw error;
       })
@@ -27,9 +31,9 @@ export class APIService {
   }
 
   protected post<T>(url: string, data: any): Observable<T> {
-    return this.http.post<APIResponse<T>>(url, data).pipe(
-      map(response => response.data),
-      catchError(error => {
+    return this.http.post<RequestResult<T>>(url, data).pipe(
+      map((response: { data: any; }) => response.data),
+      catchError((error: HttpErrorResponse) => {
         this.errorHandler.handleError(error);
         throw error;
       })
