@@ -1,5 +1,5 @@
-﻿using PlanetaryExplorationLogs.API.Data.DTO;
-using PlanetaryExplorationLogs.API.Data.Context;
+﻿using PlanetaryExplorationLogs.API.Data.Context;
+using PlanetaryExplorationLogs.API.Data.DTO;
 using static PlanetaryExplorationLogs.API.Utility.Patterns.CommandQuery;
 
 namespace PlanetaryExplorationLogs.API.Requests.Queries.Planets.GetPlanetsDropdownList

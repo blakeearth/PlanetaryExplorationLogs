@@ -10,7 +10,7 @@ namespace PlanetaryExplorationLogs.API.Requests.Queries.Discoveries.GetDiscovery
             : base(context)
         {
         }
-        
+
         public override IHandler<List<DiscoveryType>> Handler => new GetDiscoveryTypes_Handler(DbContext);
     }
 }

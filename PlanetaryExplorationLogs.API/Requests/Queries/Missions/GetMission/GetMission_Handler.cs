@@ -21,7 +21,6 @@ namespace PlanetaryExplorationLogs.API.Requests.Queries.Missions.GetMission
         {
             var mission = await _context.Missions
                 .Where(m => m.Id == _id)
-                .OrderByDescending(t => t.Date)
                 .FirstOrDefaultAsync();
 
             var result = new RequestResult<Mission> { Data = mission };

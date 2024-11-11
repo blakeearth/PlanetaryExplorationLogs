@@ -1,7 +1,7 @@
-﻿using PlanetaryExplorationLogs.API.Data.Models;
-using Microsoft.EntityFrameworkCore;
-using PlanetaryExplorationLogs.API.Utility.Patterns;
+﻿using Microsoft.EntityFrameworkCore;
 using PlanetaryExplorationLogs.API.Data.Context;
+using PlanetaryExplorationLogs.API.Data.Models;
+using PlanetaryExplorationLogs.API.Utility.Patterns;
 using static PlanetaryExplorationLogs.API.Utility.Patterns.CommandQuery;
 
 namespace PlanetaryExplorationLogs.API.Requests.Queries.Discoveries.GetDiscoveryTypes
@@ -19,9 +19,9 @@ namespace PlanetaryExplorationLogs.API.Requests.Queries.Discoveries.GetDiscovery
                 .OrderBy(t => t.Name)
                 .ToListAsync();
 
-            var result = new RequestResult<List<DiscoveryType>> 
-            { 
-                Data = discoveryTypes 
+            var result = new RequestResult<List<DiscoveryType>>
+            {
+                Data = discoveryTypes
             };
 
             return result;

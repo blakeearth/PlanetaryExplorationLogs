@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PlanetaryExplorationLogs.API.Data.Context;
 using PlanetaryExplorationLogs.API.Data.Models;
+using PlanetaryExplorationLogs.API.Requests.Queries.Discoveries.GetDiscovery;
 using PlanetaryExplorationLogs.API.Requests.Queries.Discoveries.GetDiscoveryTypes;
 using PlanetaryExplorationLogs.API.Utility.Patterns;
 
@@ -26,10 +27,10 @@ namespace PlanetaryExplorationLogs.API.Controllers
 
         // GET: api/discovery/{id}
         [HttpGet("{id}")]
-        public IActionResult GetDiscovery(int id)
+        public async Task<RequestResult<Discovery>> GetDiscoveryAsync(int id)
         {
-            // Retrieve a specific discovery by ID.
-            return StatusCode(501); // Not Implemented
+            var query = new GetDiscovery_Query(_context, id);
+            return await query.ExecuteAsync();
         }
 
         // PUT: api/discovery/{id}

@@ -1,9 +1,8 @@
-﻿using PlanetaryExplorationLogs.API.Data.DTO;
-using PlanetaryExplorationLogs.API.Data.Context;
+﻿using PlanetaryExplorationLogs.API.Data.Context;
+using PlanetaryExplorationLogs.API.Data.DTO;
 using static PlanetaryExplorationLogs.API.Utility.Patterns.CommandQuery;
-using PlanetaryExplorationLogs.API.Requests.Queries.Planets.GetPlanet;
 
-namespace PlanetaryExplorationLogs.API.Requests.Queries.Planets.GetPlanetsDropdownList
+namespace PlanetaryExplorationLogs.API.Requests.Queries.Planets.GetPlanet
 {
     public class GetPlanet_Query : RequestBase<PlanetFormDto>
     {
