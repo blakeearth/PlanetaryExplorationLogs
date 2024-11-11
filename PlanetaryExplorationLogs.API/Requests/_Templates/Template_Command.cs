@@ -9,7 +9,7 @@ namespace PlanetaryExplorationLogs.API.Requests._Templates
     {
         private readonly int _someInputParameter;
 
-        public SimpleCmd_Command(PlanetExplorationDbContext context,int someInputParameter)
+        public SimpleCmd_Command(PlanetExplorationDbContext context, int someInputParameter)
             : base(context)
         {
             _someInputParameter = someInputParameter;

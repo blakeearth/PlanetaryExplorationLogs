@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PlanetaryExplorationLogs.API.Data.Context;
 using PlanetaryExplorationLogs.API.Utility.Patterns;
 using System.Net;
-using PlanetaryExplorationLogs.API.Data.Context;
 using static PlanetaryExplorationLogs.API.Utility.Patterns.CommandQuery;
 
 namespace PlanetaryExplorationLogs.API.Requests._Templates

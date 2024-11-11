@@ -24,7 +24,7 @@ namespace PlanetaryExplorationLogs.API.Data.Models
         public string Location { get; set; } = "";
 
         public virtual Mission Mission { get; set; } = null!;
-        
+
         public virtual DiscoveryType DiscoveryType { get; set; } = null!;
     }
 }

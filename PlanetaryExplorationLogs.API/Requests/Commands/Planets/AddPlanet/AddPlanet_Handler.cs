@@ -8,17 +8,17 @@ using static PlanetaryExplorationLogs.API.Utility.Patterns.CommandQuery;
 namespace PlanetaryExplorationLogs.API.Requests.Commands.Planets
 {
     public class AddPlanet_Handler : HandlerBase<int>
-	{
-		private readonly PlanetFormDto _planet;
+    {
+        private readonly PlanetFormDto _planet;
 
-		public AddPlanet_Handler(PlanetExplorationDbContext context, PlanetFormDto planet)
-			: base(context)
-		{
-			_planet = planet;
-		}
+        public AddPlanet_Handler(PlanetExplorationDbContext context, PlanetFormDto planet)
+            : base(context)
+        {
+            _planet = planet;
+        }
 
-		public override async Task<RequestResult<int>> HandleAsync()
-		{
+        public override async Task<RequestResult<int>> HandleAsync()
+        {
             var newPlanet = new Planet
             {
                 Climate = _planet.Climate,
@@ -32,13 +32,13 @@ namespace PlanetaryExplorationLogs.API.Requests.Commands.Planets
             await DbContext.SaveChangesAsync();
 
             var result = new RequestResult<int>
-			{
-				Data = newPlanet.Id,
+            {
+                Data = newPlanet.Id,
                 StatusCode = HttpStatusCode.Created
             };
 
-			return result;
-		}
-	}
+            return result;
+        }
+    }
 
 }

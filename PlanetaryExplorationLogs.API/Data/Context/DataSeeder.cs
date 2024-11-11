@@ -56,7 +56,7 @@ namespace PlanetaryExplorationLogs.API.Data.Context
                 await _context.SaveChangesAsync();
             }
 
-            if(!await _context.DiscoveryTypes.AnyAsync())
+            if (!await _context.DiscoveryTypes.AnyAsync())
             {
                 await _context.DiscoveryTypes.AddRangeAsync(
                     new DiscoveryType

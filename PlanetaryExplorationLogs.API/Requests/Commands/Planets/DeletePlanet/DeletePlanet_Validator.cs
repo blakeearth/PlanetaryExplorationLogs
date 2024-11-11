@@ -7,28 +7,28 @@ using static PlanetaryExplorationLogs.API.Utility.Patterns.CommandQuery;
 namespace PlanetaryExplorationLogs.API.Requests.Commands.Planets.DeletePlanet
 {
     public class DeletePlanet_Validator : ValidatorBase
-	{
-		private readonly int _planetId;
+    {
+        private readonly int _planetId;
 
-		public DeletePlanet_Validator(PlanetExplorationDbContext context, int planetId)
-			: base(context)
-		{
-			_planetId = planetId;
-		}
+        public DeletePlanet_Validator(PlanetExplorationDbContext context, int planetId)
+            : base(context)
+        {
+            _planetId = planetId;
+        }
 
-		public override async Task<RequestResult> ValidateAsync()
-		{
-			await Task.CompletedTask;
+        public override async Task<RequestResult> ValidateAsync()
+        {
+            await Task.CompletedTask;
 
-			if (!await DbContext.Planets.AnyAsync(p => p.Id == _planetId))
-			{
-				return await InvalidResultAsync(
-					HttpStatusCode.BadRequest,
-					"No planet exists with the given ID.");
-			}
+            if (!await DbContext.Planets.AnyAsync(p => p.Id == _planetId))
+            {
+                return await InvalidResultAsync(
+                    HttpStatusCode.BadRequest,
+                    "No planet exists with the given ID.");
+            }
 
-			return await ValidResultAsync();
-		}
-	}
+            return await ValidResultAsync();
+        }
+    }
 
 }
