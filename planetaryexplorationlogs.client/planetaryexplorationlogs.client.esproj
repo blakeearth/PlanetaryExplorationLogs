@@ -9,5 +9,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="src\app\core\interceptors\" />
+    <Folder Include="src\app\features\discoveries\components\" />
+    <Folder Include="src\app\features\missions\components\" />
+    <Folder Include="src\app\features\planets\components\" />
   </ItemGroup>
 </Project>
