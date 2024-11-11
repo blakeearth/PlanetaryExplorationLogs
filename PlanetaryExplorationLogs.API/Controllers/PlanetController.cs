@@ -5,6 +5,8 @@ using PlanetaryExplorationLogs.API.Data.Models;
 using PlanetaryExplorationLogs.API.Requests.Commands.Planets;
 using PlanetaryExplorationLogs.API.Requests.Commands.Planets.DeletePlanet;
 using PlanetaryExplorationLogs.API.Requests.Commands.Planets.UpdatePlanet;
+using PlanetaryExplorationLogs.API.Requests.Queries.Planets.GetPlanet;
+using PlanetaryExplorationLogs.API.Requests.Queries.Planets.GetPlanetMissions;
 using PlanetaryExplorationLogs.API.Requests.Queries.Planets.GetPlanetsDropdownList;
 using PlanetaryExplorationLogs.API.Utility.Patterns;
 
@@ -25,6 +27,14 @@ namespace PlanetaryExplorationLogs.API.Controllers
         public async Task<ActionResult<RequestResult<List<PlanetDropdownDto>>>> GetPlanetsDropdownList()
         {
             var query = new GetPlanetsDropdownList_Query(_context);
+            return await query.ExecuteAsync();
+        }
+
+        // GET: api/planet/{id}/missions
+        [HttpGet("{id}/missions")]
+        public async Task<ActionResult<RequestResult<List<Mission>>>> GetPlanetMissions(int id)
+        {
+            var query = new GetPlanetMissionsMissions_Query(_context, id);
             return await query.ExecuteAsync();
         }
 
