@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -8,20 +8,14 @@ import { ErrorHandlerService } from './core/services/error-handler.service';
 import { PlanetService } from './features/planets/services/planet.service';
 
 
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    FormsModule,
-    CoreModule,
-  ],
-  providers: [
-    PlanetService,
-    ErrorHandlerService
-  ],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        FormsModule,
+        CoreModule], providers: [
+        PlanetService,
+        ErrorHandlerService,
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule { }
