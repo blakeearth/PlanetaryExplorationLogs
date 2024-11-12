@@ -9,7 +9,7 @@ namespace PlanetaryExplorationLogs.API.Requests.Queries.Missions.GetDiscoveriesF
     {
         public override async Task<RequestResult> ValidateAsync()
         {
-            if (!DbContext.Discoveries.Where(d => d.Id == missionId).Any())
+            if (!DbContext.Missions.Where(m => m.Id == missionId).Any())
             {
                 return await InvalidResultAsync(
                     HttpStatusCode.NotFound,
