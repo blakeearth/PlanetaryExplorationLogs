@@ -1,13 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { Discovery } from '../../models/discovery.model';
-import { ValidatedFieldComponent } from '../../../../core/components/validated-field/validated-field.component';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-discovery-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ValidatedFieldComponent],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './discovery-form.component.html',
   styleUrl: './discovery-form.component.css'
 })
