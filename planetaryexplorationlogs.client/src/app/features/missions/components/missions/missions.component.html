@@ -1,2 +1,5 @@
 <h2>Missions</h2>
-<app-mission-form *ngFor="let mission of missions" [mission]="mission"></app-mission-form>
+<app-mission-form *ngFor="let mission of missions" [mission]="mission" [planetId]="planetId"></app-mission-form>
+
+<button *ngIf="!newMission" (click)="onNewMission()" type="submit">Report new mission</button>
+<app-mission-form  *ngIf="newMission" [(mission)]="newMission" [planetId]="planetId"></app-mission-form>

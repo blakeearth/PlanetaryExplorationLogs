@@ -1,6 +1,6 @@
 export interface Mission{
-  id: number;
-  name: string;
-  date: string;
-  description: string;
+  id?: number;
+  name?: string;
+  date?: string;
+  description?: string;
 }

@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PlanetaryExplorationLogs.API.Data.Context;
+using PlanetaryExplorationLogs.API.Data.DTO;
 using PlanetaryExplorationLogs.API.Data.Models;
+using PlanetaryExplorationLogs.API.Requests.Commands.Planets;
+using PlanetaryExplorationLogs.API.Requests.Queries.Missions.GetDiscoveriesForMission;
 using PlanetaryExplorationLogs.API.Requests.Queries.Missions.GetMission;
 using PlanetaryExplorationLogs.API.Requests.Queries.Missions.GetMissions;
 using PlanetaryExplorationLogs.API.Utility.Patterns;
@@ -35,15 +38,15 @@ namespace PlanetaryExplorationLogs.API.Controllers
 
         // POST: api/mission
         [HttpPost]
-        public async Task<ActionResult<RequestResult<int>>> CreateMission([FromBody] Mission mission)
+        public async Task<ActionResult<RequestResult<int>>> CreateMission([FromBody] MissionFormDto mission)
         {
-            // Create a new mission.
-            return StatusCode(501); // Not Implemented
+            var command = new CreateMission_Command(_context, mission);
+            return await command.ExecuteAsync();
         }
 
         // PUT: api/mission
         [HttpPut]
-        public async Task<ActionResult<RequestResult<int>>> UpdateMission([FromBody] Mission mission)
+        public async Task<ActionResult<RequestResult<int>>> UpdateMission([FromBody] MissionFormDto mission)
         {
             // Update an existing mission.
             return StatusCode(501); // Not Implemented
@@ -61,16 +64,16 @@ namespace PlanetaryExplorationLogs.API.Controllers
         [HttpGet("{missionId}/discovery")]
         public async Task<ActionResult<RequestResult<List<Discovery>>>> GetDiscoveriesForMission(int missionId)
         {
-            // Retrieve all discoveries for a specific mission.
-            return StatusCode(501); // Not Implemented
+            var query = new GetDiscoveriesForMission_Query(_context, missionId);
+            return await query.ExecuteAsync();
         }
 
         // POST: api/mission/{missionId}/discovery
         [HttpPost("{missionId}/discovery")]
-        public async Task<ActionResult<RequestResult<int>>> CreateDiscoveryForMission(int missionId, [FromBody] Discovery discovery)
+        public async Task<ActionResult<RequestResult<int>>> CreateDiscoveryForMission(int missionId, [FromBody] DiscoveryFormDto discovery)
         {
-            // Create a new discovery under a specific mission.
-            return StatusCode(501); // Not Implemented
+            var command = new CreateDiscoveryForMission_Command(_context, missionId, discovery);
+            return await command.ExecuteAsync();
         }
 
     }

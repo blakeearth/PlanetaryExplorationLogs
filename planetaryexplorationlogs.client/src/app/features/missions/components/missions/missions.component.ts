@@ -14,8 +14,9 @@ import { FormsModule } from '@angular/forms';
 })
 export class MissionsComponent {
 
-  @Input({ required: true }) planetId: number = -1;
+  @Input({ required: true }) planetId!: number;
   missions: Mission[] = []
+  newMission?: Mission;
   constructor(private planetService: PlanetService) { }
 
   ngOnInit() {
@@ -29,6 +30,10 @@ export class MissionsComponent {
   }
 
   loadPlanetMissions() {
-    this.planetService.getPlanetMissions(this.planetId).subscribe((v: Mission[]) => { this.missions = v; console.log(this.missions) });
+    this.planetService.getPlanetMissions(this.planetId).subscribe((v: Mission[]) => { this.missions = v });
+  }
+
+  onNewMission() {
+    this.newMission = {};
   }
 }
