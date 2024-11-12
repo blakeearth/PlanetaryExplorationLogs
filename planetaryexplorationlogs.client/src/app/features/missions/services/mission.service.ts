@@ -4,7 +4,8 @@ import { Observable } from 'rxjs';
 import { APIService } from '../../../core/services/api.service';
 import { ErrorHandlerService } from '../../../core/services/error-handler.service';
 import { Discovery } from '../../discoveries/models/discovery.model';
-import { MissionFormDTO } from '../dtos/mission-form.dto';
+import { MissionFormDto } from '../dtos/mission-form.dto';
+import { DiscoveryFormDto } from '../../discoveries/dtos/discovery-form.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,15 @@ export class MissionService extends APIService {
     return this.get<Discovery[]>(`${this.API_PATH}/${missionId}/discovery`);
   }
 
-  createMission(mission: MissionFormDTO): Observable<MissionFormDTO> {
-    return this.post<MissionFormDTO>(this.API_PATH, mission);
+  createDiscoveryForMission(discovery: DiscoveryFormDto): Observable<DiscoveryFormDto> {
+    return this.post<DiscoveryFormDto>(`${this.API_PATH}/${discovery.missionId}/discovery`, discovery);
+  }
+
+  createMission(mission: MissionFormDto): Observable<MissionFormDto> {
+    return this.post<MissionFormDto>(this.API_PATH, mission);
+  }
+
+  deleteMission(missionId: number): Observable<number> {
+    return this.delete<number>(`${this.API_PATH}/${missionId}`);
   }
 }

@@ -1,2 +1,5 @@
 <h3>Discoveries</h3>
-<app-discovery-form *ngFor="let discovery of discoveries" [discovery]="discovery"></app-discovery-form>
+<app-discovery-form *ngFor="let discovery of discoveries" [missionId]="missionId" [discovery]="discovery" [discoveryTypes]="discoveryTypes"></app-discovery-form>
+
+<button *ngIf="!newDiscovery" (click)="onNewDiscovery()" type="submit">Report new discovery</button>
+<app-discovery-form *ngIf="newDiscovery" [(discovery)]="newDiscovery" [missionId]="missionId" [discoveryTypes]="discoveryTypes" (discoveryChange)="onDiscoveryChange()"></app-discovery-form>

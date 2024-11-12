@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PlanetaryExplorationLogs.API.Data.Context;
 using PlanetaryExplorationLogs.API.Data.Models;
+using PlanetaryExplorationLogs.API.Requests.Commands.Discoveries.DeleteDiscovery;
 using PlanetaryExplorationLogs.API.Requests.Queries.Discoveries.GetDiscovery;
 using PlanetaryExplorationLogs.API.Requests.Queries.Discoveries.GetDiscoveryTypes;
 using PlanetaryExplorationLogs.API.Utility.Patterns;
@@ -43,10 +44,10 @@ namespace PlanetaryExplorationLogs.API.Controllers
 
         // DELETE: api/discovery/{id}
         [HttpDelete("{id}")]
-        public IActionResult DeleteDiscovery(int id)
+        public async Task<ActionResult<RequestResult<int>>> DeleteDiscovery(int id)
         {
-            // Delete a discovery.
-            return StatusCode(501); // Not Implemented
+            var cmd = new DeleteDiscovery_Command(_context, id);
+            return await cmd.ExecuteAsync();
         }
     }
 }

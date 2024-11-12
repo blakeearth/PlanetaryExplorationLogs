@@ -4,11 +4,12 @@ import { PlanetService } from '../../../planets/services/planet.service';
 import { Mission } from '../../models/mission.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { DiscoveriesComponent } from '../../../discoveries/components/discoveries/discoveries.component';
 
 @Component({
   selector: 'app-missions',
   standalone: true,
-  imports: [CommonModule, FormsModule, MissionFormComponent],
+  imports: [CommonModule, FormsModule, MissionFormComponent, DiscoveriesComponent],
   templateUrl: './missions.component.html',
   styleUrl: './missions.component.css'
 })
@@ -35,5 +36,9 @@ export class MissionsComponent {
 
   onNewMission() {
     this.newMission = {};
+  }
+
+  onMissionChange() {
+    this.loadPlanetMissions();
   }
 }

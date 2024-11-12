@@ -1,4 +1,4 @@
-export interface MissionFormDTO {
+export interface MissionFormDto {
   planetId: number;
   name: string;
   date: string;

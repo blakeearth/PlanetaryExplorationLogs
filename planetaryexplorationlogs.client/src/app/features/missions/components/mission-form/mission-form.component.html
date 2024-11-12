@@ -23,10 +23,12 @@
     </div>
   </div>
 
+  <div *ngIf="mission?.id">
+    <button (click)="onDelete($event)">🗑️</button>
+  </div>
+
   <div *ngIf="!mission?.id">
     <button (click)="onCancel($event)">Cancel</button>
     <button>Submit</button>
   </div>
 </form>
-
-<app-discoveries *ngIf="mission?.id" [missionId]="mission?.id!"></app-discoveries>

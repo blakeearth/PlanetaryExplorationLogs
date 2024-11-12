@@ -39,4 +39,14 @@ export class APIService {
       })
     );
   }
+
+  protected delete<T>(url: string): Observable<T> {
+    return this.http.delete<RequestResult<T>>(url).pipe(
+      map((response: { data: any; }) => response.data),
+      catchError((error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
+        throw error;
+      })
+    );
+  }
 }

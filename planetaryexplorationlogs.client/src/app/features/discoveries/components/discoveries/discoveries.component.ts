@@ -3,6 +3,8 @@ import { Discovery } from '../../models/discovery.model';
 import { MissionService } from '../../../missions/services/mission.service';
 import { DiscoveryFormComponent } from '../discovery-form/discovery-form.component';
 import { CommonModule } from '@angular/common';
+import { DiscoveryType } from '../../models/discovery-type.model';
+import { DiscoveryService } from '../../services/discovery.service';
 
 @Component({
   selector: 'app-discoveries',
@@ -12,22 +14,45 @@ import { CommonModule } from '@angular/common';
   styleUrl: './discoveries.component.css'
 })
 export class DiscoveriesComponent {
-  @Input({ required: true }) missionId: number = -1;
+  @Input({ required: true }) missionId!: number;
+
   discoveries: Discovery[] = []
-  constructor(private missionService: MissionService) { }
+  newDiscovery?: Discovery;
+
+  discoveryTypes: DiscoveryType[] = [];
+
+  constructor(private missionService: MissionService, private discoveryService: DiscoveryService) { }
 
   ngOnInit() {
-    console.log(this.missionId);
     this.loadDiscoveriesForMission();
+    this.loadDiscoveryTypes();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['missionId']) {
       this.loadDiscoveriesForMission();
     }
+
+    else if (changes['newDiscovery']) {
+
+    }
   }
 
   loadDiscoveriesForMission() {
-    this.missionService.getDiscoveriesForMission(this.missionId).subscribe((v: Discovery[]) => { this.discoveries = v; });
+    this.missionService.getDiscoveriesForMission(this.missionId).subscribe((v: Discovery[]) => { this.discoveries = v; console.log(this.discoveries); });
+  }
+
+  loadDiscoveryTypes() {
+    this.discoveryService.getDiscoveryTypes().subscribe((v: DiscoveryType[]) => this.discoveryTypes = v)
+  }
+
+  onNewDiscovery() {
+    this.newDiscovery = {
+      missionId: this.missionId
+    };
+  }
+
+  onDiscoveryChange() {
+    this.loadDiscoveriesForMission();
   }
 }

@@ -2,6 +2,7 @@
 using PlanetaryExplorationLogs.API.Data.Context;
 using PlanetaryExplorationLogs.API.Data.DTO;
 using PlanetaryExplorationLogs.API.Data.Models;
+using PlanetaryExplorationLogs.API.Requests.Commands.Missions.DeleteMission;
 using PlanetaryExplorationLogs.API.Requests.Commands.Planets;
 using PlanetaryExplorationLogs.API.Requests.Queries.Missions.GetDiscoveriesForMission;
 using PlanetaryExplorationLogs.API.Requests.Queries.Missions.GetMission;
@@ -56,8 +57,9 @@ namespace PlanetaryExplorationLogs.API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<RequestResult<int>>> DeleteMission(int id)
         {
-            // Delete a mission by ID.
-            return StatusCode(501); // Not Implemented
+            var cmd = new DeleteMission_Command(_context, id);
+            return await cmd.ExecuteAsync();
+
         }
 
         // GET: api/mission/{missionId}/discovery

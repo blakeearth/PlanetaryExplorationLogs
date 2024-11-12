@@ -7,6 +7,15 @@
   </div>
 
   <div>
+    <select id="discoveryTypeId" formControlName="discoveryTypeId">
+      <option [ngValue]="type.id" *ngFor="let type of discoveryTypes">{{type.name}}</option>
+    </select>
+    <div *ngIf="discoveryForm.get('discoveryTypeId')?.invalid && discoveryForm.get('discoveryTypeId')?.touched">
+      <p *ngIf="discoveryForm.get('discoveryTypeId')?.errors?.['required']">Discovery type is required.</p>
+    </div>
+  </div>
+
+  <div>
     <textarea id="description" formControlName="description"></textarea>
     <div *ngIf="discoveryForm.get('description')?.invalid && discoveryForm.get('description')?.touched">
       <p *ngIf="discoveryForm.get('description')?.errors?.['required']">Description is required.</p>
@@ -20,5 +29,12 @@
     </div>
   </div>
 
-  <button type="submit">Save</button>
+  <div *ngIf="discovery?.id">
+    <button (click)="onDelete($event)">🗑️</button>
+  </div>
+
+  <div *ngIf="!discovery?.id">
+    <button (click)="onCancel($event)">Cancel</button>
+    <button>Submit</button>
+  </div>
 </form>
