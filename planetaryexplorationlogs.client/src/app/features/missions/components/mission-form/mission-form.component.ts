@@ -29,7 +29,8 @@ export class MissionFormComponent {
     this.missionForm = this.formBuilder.group({
       date: [this.formatDate(new Date(this.mission?.date ?? '')), [Validators.required]],
       name: [this.mission?.name ?? '', [Validators.required]],
-      description: [this.mission?.description ?? '', [Validators.required]]
+      description: [this.mission?.description ?? '', [Validators.required]],
+      id: [this.mission?.id ?? 0]
     });
   }
 
@@ -37,10 +38,21 @@ export class MissionFormComponent {
     if (this.missionForm.valid) {
       let mission: MissionFormDto = this.missionForm.value as MissionFormDto;
       mission.planetId = this.planetId;
-      this.missionService.createMission(this.missionForm.value).subscribe((_v: Mission) => { this.onCancel() })
+      this.missionService.createMission(mission).subscribe((_v: Mission) => { this.onCancel() })
     }
     else {
       console.log('Form is invalid');
+    }
+  }
+
+  onUpdate(): void {
+    if (this.mission?.id && this.missionForm.valid) {
+      let mission: MissionFormDto = this.missionForm.value as MissionFormDto;
+      mission.planetId = this.planetId;
+      this.missionService.updateMission(this.mission.id, mission).subscribe();
+    }
+    else {
+      console.log('Failed to save update: form is invalid');
     }
   }
 

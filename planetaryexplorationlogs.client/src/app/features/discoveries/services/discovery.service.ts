@@ -4,14 +4,14 @@ import { Observable } from 'rxjs';
 import { APIService } from '../../../core/services/api.service';
 import { ErrorHandlerService } from '../../../core/services/error-handler.service';
 import { DiscoveryType } from '../models/discovery-type.model';
+import { Discovery } from '../models/discovery.model';
+import { DiscoveryFormDto } from '../dtos/discovery-form.dto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DiscoveryService extends APIService {
   private readonly API_PATH = '/api/discovery';
-
-  private types: number[] = []
 
   constructor(http: HttpClient, errorHandler: ErrorHandlerService) {
     super(http, errorHandler);
@@ -25,4 +25,7 @@ export class DiscoveryService extends APIService {
     return this.delete<number>(`${this.API_PATH}/${id}`);
   }
 
+  updateDiscovery(id: number, discovery: DiscoveryFormDto): Observable<number> {
+    return this.put<number>(`${this.API_PATH}/${id}`, discovery);
+  }
 }

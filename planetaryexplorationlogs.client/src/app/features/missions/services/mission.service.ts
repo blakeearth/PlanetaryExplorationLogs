@@ -6,6 +6,7 @@ import { ErrorHandlerService } from '../../../core/services/error-handler.servic
 import { Discovery } from '../../discoveries/models/discovery.model';
 import { MissionFormDto } from '../dtos/mission-form.dto';
 import { DiscoveryFormDto } from '../../discoveries/dtos/discovery-form.dto';
+import { Mission } from '../models/mission.model';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,10 @@ export class MissionService extends APIService {
 
   deleteMission(missionId: number): Observable<number> {
     return this.delete<number>(`${this.API_PATH}/${missionId}`);
+  }
+
+  updateMission(id: number, mission: Mission): Observable<Mission> {
+    console.log(mission);
+    return this.put<Mission>(`${this.API_PATH}/${id}`, mission);
   }
 }

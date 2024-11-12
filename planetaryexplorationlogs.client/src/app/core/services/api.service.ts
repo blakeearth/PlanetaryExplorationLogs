@@ -20,7 +20,6 @@ export class APIService {
   ) { }
 
   protected get<T>(url: string): Observable<T> {
-    console.log(url);
     return this.http.get<RequestResult<T>>(url).pipe(
       map((response: { data: any; }) => response.data),
       catchError((error: HttpErrorResponse) => {
@@ -33,6 +32,16 @@ export class APIService {
   protected post<T>(url: string, data: any): Observable<T> {
     return this.http.post<RequestResult<T>>(url, data).pipe(
       map((response: { data: any; }) => response.data),
+      catchError((error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
+        throw error;
+      })
+    );
+  }
+
+  protected put<T>(url: string, data: any): Observable<T> {
+    return this.http.put<RequestResult<T>>(url, data).pipe(
+      map((response: { data: any; }) => { response.data; console.log(response); return response.data }),
       catchError((error: HttpErrorResponse) => {
         this.errorHandler.handleError(error);
         throw error;

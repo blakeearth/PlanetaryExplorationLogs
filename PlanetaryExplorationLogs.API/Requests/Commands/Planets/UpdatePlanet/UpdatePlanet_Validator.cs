@@ -21,14 +21,19 @@ namespace PlanetaryExplorationLogs.API.Requests.Commands.Planets.UpdatePlanet
             // Obviously, this is dummy validation logic. Replace it with your own.
             await Task.CompletedTask;
 
-            if (DbContext.Planets.Any(p => p.Id == _planet.Id))
+            if (!DbContext.Planets.Any(p => p.Id == _planet.Id))
+            {
+                return await InvalidResultAsync(
+                    HttpStatusCode.BadRequest,
+                    "Invalid planet specified.");
+            }
 
-                if (string.IsNullOrEmpty(_planet.Name.Trim()))
-                {
-                    return await InvalidResultAsync(
-                        HttpStatusCode.BadRequest,
-                        "The planet must have a name.");
-                }
+            if (string.IsNullOrEmpty(_planet.Name.Trim()))
+            {
+                return await InvalidResultAsync(
+                    HttpStatusCode.BadRequest,
+                    "The planet must have a name.");
+            }
 
             if (string.IsNullOrEmpty(_planet.Type.Trim()))
             {

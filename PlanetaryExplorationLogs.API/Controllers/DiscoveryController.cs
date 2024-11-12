@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PlanetaryExplorationLogs.API.Data.Context;
+using PlanetaryExplorationLogs.API.Data.DTO;
 using PlanetaryExplorationLogs.API.Data.Models;
 using PlanetaryExplorationLogs.API.Requests.Commands.Discoveries.DeleteDiscovery;
+using PlanetaryExplorationLogs.API.Requests.Commands.Discoveries.UpdateDiscovery;
 using PlanetaryExplorationLogs.API.Requests.Queries.Discoveries.GetDiscovery;
 using PlanetaryExplorationLogs.API.Requests.Queries.Discoveries.GetDiscoveryTypes;
 using PlanetaryExplorationLogs.API.Utility.Patterns;
@@ -36,10 +38,10 @@ namespace PlanetaryExplorationLogs.API.Controllers
 
         // PUT: api/discovery/{id}
         [HttpPut("{id}")]
-        public IActionResult UpdateDiscovery(int id)
+        public async Task<ActionResult<RequestResult<int>>> UpdateDiscovery(int id, [FromBody] DiscoveryFormDto discovery)
         {
-            // Update an existing discovery.
-            return StatusCode(501); // Not Implemented
+            var cmd = new UpdateDiscovery_Command(_context, id, discovery);
+            return await cmd.ExecuteAsync();
         }
 
         // DELETE: api/discovery/{id}

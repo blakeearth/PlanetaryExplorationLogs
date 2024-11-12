@@ -45,13 +45,18 @@ export class DiscoveryFormComponent {
     }
   }
 
-  onCancel(e?: Event) {
-    // Prevent any submission attempt before unmounting the form
-    e?.preventDefault();
+  onUpdate(): void {
+    console.log("updating");
+    if (this.discovery?.id && this.discoveryForm.valid) {
+      console.log("updsessseating");
 
-    // Output that this was canceled
-    this.discovery = undefined;
-    this.discoveryChange.emit(this.discovery);
+      let discovery: DiscoveryFormDto = this.discoveryForm.value as DiscoveryFormDto;
+      discovery.missionId = this.missionId;
+      this.discoveryService.updateDiscovery(this.discovery.id, discovery).subscribe();
+    }
+    else {
+      console.log('Failed to save update: form is invalid');
+    }
   }
 
   onDelete(e?: Event) {
@@ -59,5 +64,14 @@ export class DiscoveryFormComponent {
     e?.preventDefault();
 
     this.discoveryService.deleteDiscovery(this.discovery?.id ?? 0).subscribe((_v: number) => this.onCancel() );
+  }
+
+  onCancel(e?: Event) {
+    // Prevent any submission attempt before unmounting the form
+    e?.preventDefault();
+
+    // Output that this was canceled
+    this.discovery = undefined;
+    this.discoveryChange.emit(this.discovery);
   }
 }

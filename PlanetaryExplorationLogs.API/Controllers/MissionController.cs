@@ -3,6 +3,7 @@ using PlanetaryExplorationLogs.API.Data.Context;
 using PlanetaryExplorationLogs.API.Data.DTO;
 using PlanetaryExplorationLogs.API.Data.Models;
 using PlanetaryExplorationLogs.API.Requests.Commands.Missions.DeleteMission;
+using PlanetaryExplorationLogs.API.Requests.Commands.Missions.UpdateMission;
 using PlanetaryExplorationLogs.API.Requests.Commands.Planets;
 using PlanetaryExplorationLogs.API.Requests.Queries.Missions.GetDiscoveriesForMission;
 using PlanetaryExplorationLogs.API.Requests.Queries.Missions.GetMission;
@@ -45,12 +46,12 @@ namespace PlanetaryExplorationLogs.API.Controllers
             return await command.ExecuteAsync();
         }
 
-        // PUT: api/mission
-        [HttpPut]
-        public async Task<ActionResult<RequestResult<int>>> UpdateMission([FromBody] MissionFormDto mission)
+        // PUT: api/mission/{id}
+        [HttpPut("{id}")]
+        public async Task<ActionResult<RequestResult<int>>> UpdateMission(int id, [FromBody] MissionFormDto mission)
         {
-            // Update an existing mission.
-            return StatusCode(501); // Not Implemented
+            var cmd = new UpdateMission_Command(_context, id, mission);
+            return await cmd.ExecuteAsync();
         }
 
         // DELETE: api/mission/{id}
@@ -59,7 +60,6 @@ namespace PlanetaryExplorationLogs.API.Controllers
         {
             var cmd = new DeleteMission_Command(_context, id);
             return await cmd.ExecuteAsync();
-
         }
 
         // GET: api/mission/{missionId}/discovery
