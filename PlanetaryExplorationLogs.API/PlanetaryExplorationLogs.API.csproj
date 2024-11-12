@@ -24,8 +24,6 @@
 
   <ItemGroup>
 	<Folder Include="Migrations\" />
-    <Folder Include="Requests\Commands\Discoveries\" />
-    <Folder Include="Requests\Commands\Missions\" />
   </ItemGroup>
 
 </Project>
