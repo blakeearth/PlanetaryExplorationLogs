@@ -5,11 +5,11 @@ using static PlanetaryExplorationLogs.API.Utility.Patterns.CommandQuery;
 
 namespace PlanetaryExplorationLogs.API.Requests.Queries.Missions.GetDiscoveriesForMission
 {
-    public class GetDiscoveriesForMission_Validator(PlanetExplorationDbContext context, int planetId) : ValidatorBase(context)
+    public class GetDiscoveriesForMission_Validator(PlanetExplorationDbContext context, int missionId) : ValidatorBase(context)
     {
         public override async Task<RequestResult> ValidateAsync()
         {
-            if (!DbContext.Missions.Where(m => m.PlanetId == planetId).Any())
+            if (!DbContext.Discoveries.Where(d => d.Id == missionId).Any())
             {
                 return await InvalidResultAsync(
                     HttpStatusCode.NotFound,
