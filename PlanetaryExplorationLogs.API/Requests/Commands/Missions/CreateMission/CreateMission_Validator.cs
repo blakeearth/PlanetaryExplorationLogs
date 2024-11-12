@@ -36,7 +36,7 @@ namespace PlanetaryExplorationLogs.API.Requests.Commands.Planets
                     "The mission must have a description.");
             }
 
-            if (!await DbContext.Missions.AnyAsync(p => p.Id == _mission.PlanetId))
+            if (!await DbContext.Planets.AnyAsync(p => p.Id == _mission.PlanetId))
             {
                 return await InvalidResultAsync(
                     HttpStatusCode.BadRequest,
