@@ -1,0 +1,16 @@
+.planet {
+    display: flex;
+    gap: 1em;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+}
+select {
+  font-size: 2em;
+  background-color: var(--main-background-color);
+  color: var(--main-color);
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}

@@ -1,0 +1,8 @@
+<div *ngIf="selectedPlanet" class="planet">
+  <select [(ngModel)]="selectedPlanetDropdown" (ngModelChange)="onPlanetSelect()">
+    <option [ngValue]="planetDropdown" *ngFor="let planetDropdown of dropdownDtos">{{planetDropdown.name}}</option>
+  </select>
+  <span>{{selectedPlanet.climate}}</span>
+  <span>{{selectedPlanet.terrain}}</span>
+  <span>{{selectedPlanet.population}}</span>
+</div>

@@ -1,0 +1,29 @@
+.missions {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: auto 1ch auto 1ch;
+  padding: 2ch;
+  border-radius: 2ch;
+  background-color: var(--lighter-background-color);
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.missions-container {
+  padding-right: 20px;
+  overflow-y: scroll;
+
+  scrollbar-width: thin;
+  scrollbar-color: #FFFFFF55 transparent;
+}
+
+  .scroll-content::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .scroll-content::-webkit-scrollbar-track {
+    background: transparent;
+  }

@@ -1,17 +1,12 @@
 <form *ngIf="!newMission && mission" [formGroup]="missionForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="date">Start Date:</label>
-    <input type="date" id="date" formControlName="date" (blur)="onUpdate()"/>
-    <div *ngIf="missionForm.get('date')?.invalid && missionForm.get('date')?.touched">
-      <p *ngIf="missionForm.get('date')?.errors?.['required']">Date is required.</p>
-    </div>
-  </div>
-
-  <div>
-    <label for="name">Mission Name:</label>
-    <textarea id="name" formControlName="name" (blur)="onUpdate()"></textarea>
+  <div class="header">
+    <input formControlName="name" (blur)="onUpdate()"/>
     <div *ngIf="missionForm.get('name')?.invalid && missionForm.get('name')?.touched">
       <p *ngIf="missionForm.get('name')?.errors?.['required']">Name is required.</p>
+    </div>
+    <input type="date" formControlName="date" (blur)="onUpdate()" />
+    <div *ngIf="missionForm.get('date')?.invalid && missionForm.get('date')?.touched">
+      <p *ngIf="missionForm.get('date')?.errors?.['required']">Date is required.</p>
     </div>
   </div>
 

@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+html, body, app-root {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--main-background-color);
+  color: var(--main-color);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --main-background-color: #121212;
+  --lighter-background-color: #24292E;
+  --main-color: #F2E7FE;
+}

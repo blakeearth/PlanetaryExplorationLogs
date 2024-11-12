@@ -1,8 +1,13 @@
-<h2>Missions</h2>
-<div *ngFor="let mission of missions">
-  <app-mission-form [mission]="mission" [planetId]="planetId" (missionChange)="onMissionChange()"></app-mission-form>
-  <app-discoveries *ngIf="mission?.id" [missionId]="mission?.id!"></app-discoveries>
+<div class="missions">
+  <div class="missions-container">
+    <h2>Missions</h2>
+    <div *ngFor="let mission of missions">
+      <app-mission-form [mission]="mission" [planetId]="planetId" (missionChange)="onMissionChange()"></app-mission-form>
+      <app-discoveries *ngIf="mission?.id" [missionId]="mission?.id!"></app-discoveries>
+    </div>
+
+    <button *ngIf="!newMission" (click)="onNewMission()" type="submit">Log new mission</button>
+    <app-mission-form *ngIf="newMission" [(mission)]="newMission" [planetId]="planetId" (missionChange)="onMissionChange()"></app-mission-form>
+  </div>
 </div>
 
-<button *ngIf="!newMission" (click)="onNewMission()" type="submit">Log new mission</button>
-<app-mission-form  *ngIf="newMission" [(mission)]="newMission" [planetId]="planetId" (missionChange)="onMissionChange()"></app-mission-form>
