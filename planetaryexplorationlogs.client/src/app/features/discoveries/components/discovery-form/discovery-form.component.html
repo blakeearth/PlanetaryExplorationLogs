@@ -1,0 +1,24 @@
+<form *ngIf="!newDiscovery && discovery" [formGroup]="discoveryForm" (ngSubmit)="onSubmit()">
+  <div>
+    <textarea id="name" formControlName="name"></textarea>
+    <div *ngIf="discoveryForm.get('name')?.invalid && discoveryForm.get('name')?.touched">
+      <p *ngIf="discoveryForm.get('name')?.errors?.['required']">Name is required.</p>
+    </div>
+  </div>
+
+  <div>
+    <textarea id="description" formControlName="description"></textarea>
+    <div *ngIf="discoveryForm.get('description')?.invalid && discoveryForm.get('description')?.touched">
+      <p *ngIf="discoveryForm.get('description')?.errors?.['required']">Description is required.</p>
+    </div>
+  </div>
+
+  <div>
+    <textarea id="location" formControlName="location"></textarea>
+    <div *ngIf="discoveryForm.get('location')?.invalid && discoveryForm.get('location')?.touched">
+      <p *ngIf="discoveryForm.get('location')?.errors?.['required']">Location is required.</p>
+    </div>
+  </div>
+
+  <button type="submit">Save</button>
+</form>
