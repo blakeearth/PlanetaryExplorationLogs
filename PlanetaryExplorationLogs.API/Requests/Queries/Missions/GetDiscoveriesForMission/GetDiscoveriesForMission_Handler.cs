@@ -19,7 +19,9 @@ namespace GetDiscoveriesForMission.API.Requests.Queries.Planets.GetDiscoveriesFo
                     Id = d.Id,
                     Name = d.Name,
                     Location = d.Location,
-                    Description = d.Description
+                    Description = d.Description,
+                    MissionId = d.MissionId,
+                    DiscoveryTypeId = d.DiscoveryTypeId,
                 })
                 .ToListAsync();
 
