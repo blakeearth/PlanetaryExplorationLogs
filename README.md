@@ -10,6 +10,8 @@
 - Update 11/9: Wow, the getting started guide for the Angular CLI does mention this issue... (https://learn.microsoft.com/en-us/visualstudio/javascript/tutorial-asp-net-core-with-angular?view=vs-2022#troubleshooting) I should have read that more carefully.
   - It also mentions: "Also, verify that the backend is configured to start before the front end", and I did this as part of my previous troubleshooting.
 - I also started brainstorming the visuals of the application.
+![long](README/long.jpeg)
+![wide](README/wide.jpeg)
 
 ## 11/9/2024
 - To resolve the initial proxy failure, I have decided to create an Angular service that will consolidate API calls and handle errors and retries.
@@ -35,7 +37,7 @@
 - Added CSS and images from Kenney.nl.
 
 ## What I would do if I continued this project
-- Add unit testing
+- Add unit testing. Add documentation to the code.
 - Combine discovery and mission forms? Make a generic version that can bind to a data model? Many similarities.
 - Consider consolidating validation to the server only instead of duplicating validation logic?
 - Create reusable validator functions on the server/API (example: lots of copied/pasted character length)
