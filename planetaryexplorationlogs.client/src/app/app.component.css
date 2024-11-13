@@ -4,6 +4,7 @@
   padding: 0 10vw;
   display: flex;
   align-items: stretch;
+  gap: 5vh;
 }
 
   .planet-select {

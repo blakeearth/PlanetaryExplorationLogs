@@ -1,10 +1,19 @@
 .planet {
-    display: flex;
-    gap: 1em;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    text-align: center;
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+}
+
+i {
+  font-size: small;
+  color: #797883;
+}
+
+img {
+  max-width: 30vw;
 }
 
 #planet-name {
@@ -14,6 +23,6 @@
   text-align: center;
 }
 
-  option {
-    background-color: var(--main-background-color);
-  }
+option {
+  background-color: var(--main-background-color);
+}

@@ -1,4 +1,8 @@
 <div *ngIf="selectedPlanet" class="planet">
+  <div>
+    <img src="/assets/planet0{{ selectedPlanet.id % 9 }}.png" />
+    <i>Images from Kenney.nl</i>
+  </div>
   <select id="planet-name" [(ngModel)]="selectedPlanetDropdown" (ngModelChange)="onPlanetSelect()">
     <option [ngValue]="planetDropdown" *ngFor="let planetDropdown of dropdownDtos">{{planetDropdown.name}}</option>
   </select>
