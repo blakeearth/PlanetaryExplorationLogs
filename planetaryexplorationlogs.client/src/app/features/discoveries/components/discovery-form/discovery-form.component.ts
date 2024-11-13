@@ -41,7 +41,7 @@ export class DiscoveryFormComponent {
       discovery.missionId = this.missionId;
       this.missionService.createDiscoveryForMission(discovery).subscribe((_v: Discovery) => { this.onCancel() });
     } else {
-      console.log('Form is invalid');
+      console.log('Failed to submit: Form is invalid');
     }
   }
 

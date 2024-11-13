@@ -14,7 +14,7 @@
   </div>
 
   <div>
-    <input type="date" formControlName="date" (blur)="onUpdate()" />
+    <input type="date" formControlName="date" (change)="onUpdate()" />
     <div *ngIf="missionForm.get('date')?.invalid && (missionForm.get('date')?.touched || this.submissionAttempted)">
       <p *ngIf="missionForm.get('date')?.errors?.['required']">Date is required.</p>
     </div>

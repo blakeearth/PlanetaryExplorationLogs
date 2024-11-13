@@ -28,7 +28,7 @@ export class MissionFormComponent {
 
   ngOnInit(): void {
     this.missionForm = this.formBuilder.group({
-      date: [this.formatDate(new Date(this.mission?.date ?? '')), [Validators.required]],
+      date: [this.mission?.date ? this.formatDate(new Date(this.mission?.date ?? '')) : undefined, [Validators.required]],
       name: [this.mission?.name ?? '', [Validators.required]],
       description: [this.mission?.description ?? '', [Validators.required]],
       id: [this.mission?.id ?? 0]
@@ -43,7 +43,7 @@ export class MissionFormComponent {
       this.missionService.createMission(mission).subscribe((_v: Mission) => { this.onCancel() })
     }
     else {
-      console.log('Form is invalid');
+      console.log('Failed to submit: Form is invalid');
     }
   }
 

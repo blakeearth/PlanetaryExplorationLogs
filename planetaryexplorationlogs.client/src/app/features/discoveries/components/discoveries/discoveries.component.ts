@@ -32,10 +32,6 @@ export class DiscoveriesComponent {
     if (changes['missionId']) {
       this.loadDiscoveriesForMission();
     }
-
-    else if (changes['newDiscovery']) {
-
-    }
   }
 
   loadDiscoveriesForMission() {
