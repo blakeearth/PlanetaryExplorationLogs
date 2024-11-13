@@ -30,11 +30,16 @@ app-root {
 
 * {
   box-sizing: border-box;
+  color-scheme: dark
 }
 
 body {
   background-color: var(--main-background-color);
   color: var(--main-color);
+}
+
+body {
+  background: black;
 }
 
 body::before, body::after {

@@ -6,7 +6,6 @@
   border-radius: 2ch;
   background-color: var(--lighter-background-color);
   height: 75%;
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: stretch;
