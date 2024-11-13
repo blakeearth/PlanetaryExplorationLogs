@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PlanetaryExplorationLogs.API.Data.Context;
 using PlanetaryExplorationLogs.API.Data.DTO;
+using PlanetaryExplorationLogs.API.Utility.Helpers;
 using PlanetaryExplorationLogs.API.Utility.Patterns;
 using System.Net;
 using static PlanetaryExplorationLogs.API.Utility.Patterns.CommandQuery;
@@ -56,6 +57,14 @@ namespace PlanetaryExplorationLogs.API.Requests.Commands.Discoveries.CreateDisco
                 return await InvalidResultAsync(
                     HttpStatusCode.BadRequest,
                     "The mission must have a location.");
+            }
+
+            string errorMessage;
+            if (!ValidationHelper.IsValid(_discovery, out errorMessage))
+            {
+                return await InvalidResultAsync(
+                    HttpStatusCode.BadRequest,
+                    errorMessage);
             }
 
             return await ValidResultAsync();

@@ -1,5 +1,6 @@
 ﻿using PlanetaryExplorationLogs.API.Data.Context;
 using PlanetaryExplorationLogs.API.Data.DTO;
+using PlanetaryExplorationLogs.API.Utility.Helpers;
 using PlanetaryExplorationLogs.API.Utility.Patterns;
 using System.Net;
 using static PlanetaryExplorationLogs.API.Utility.Patterns.CommandQuery;
@@ -54,7 +55,15 @@ namespace PlanetaryExplorationLogs.API.Requests.Commands.Discoveries.UpdateDisco
             {
                 return await InvalidResultAsync(
                     HttpStatusCode.BadRequest,
-                    "The discovery must have a valid type.");
+                "The discovery must have a valid type.");
+            }
+
+            string errorMessage;
+            if (!ValidationHelper.IsValid(_discovery, out errorMessage))
+            {
+                return await InvalidResultAsync(
+                    HttpStatusCode.BadRequest,
+                    errorMessage);
             }
 
             return await ValidResultAsync();

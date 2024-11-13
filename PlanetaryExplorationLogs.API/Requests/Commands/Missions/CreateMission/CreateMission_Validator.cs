@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PlanetaryExplorationLogs.API.Data.Context;
 using PlanetaryExplorationLogs.API.Data.DTO;
+using PlanetaryExplorationLogs.API.Utility.Helpers;
 using PlanetaryExplorationLogs.API.Utility.Patterns;
 using System.Net;
 using static PlanetaryExplorationLogs.API.Utility.Patterns.CommandQuery;
@@ -47,7 +48,15 @@ namespace PlanetaryExplorationLogs.API.Requests.Commands.Planets
             {
                 return await InvalidResultAsync(
                     HttpStatusCode.BadRequest,
-                    "The mission must have a valid date.");
+                "The mission must have a valid date.");
+            }
+
+            string errorMessage;
+            if (!ValidationHelper.IsValid(_mission, out errorMessage))
+            {
+                return await InvalidResultAsync(
+                    HttpStatusCode.BadRequest,
+                    errorMessage);
             }
 
             // You can also check things in the database, if needed, such as checking if a record exists
