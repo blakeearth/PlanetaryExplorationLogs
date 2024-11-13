@@ -1,16 +1,16 @@
 <div class="discoveries-wrapper">
-  <ol>
+  <div class="discoveries">
     <ng-container *ngIf="discoveries.length > 0">
-      <li *ngFor="let discovery of discoveries">
-        <app-discovery-form [missionId]="missionId" [discovery]="discovery" [discoveryTypes]="discoveryTypes"></app-discovery-form>
-      </li>
+      <div *ngFor="let discovery of discoveries">
+        <app-discovery-form *ngIf="discovery" [missionId]="missionId" [discovery]="discovery" [discoveryTypes]="discoveryTypes"></app-discovery-form>
+      </div>
     </ng-container>
-    <li *ngIf="newDiscovery">
+    <div *ngIf="newDiscovery">
       <app-discovery-form [(discovery)]="newDiscovery" [missionId]="missionId" [discoveryTypes]="discoveryTypes" (discoveryChange)="onDiscoveryChange()"></app-discovery-form>
-    </li>
-    <li *ngIf="!newDiscovery">
+    </div>
+    <div *ngIf="!newDiscovery">
       <button class="new-discovery" (click)="onNewDiscovery()" type="submit">Report new discovery...</button>
-    </li>
-  </ol>
+    </div>
+  </div>
 </div>
 

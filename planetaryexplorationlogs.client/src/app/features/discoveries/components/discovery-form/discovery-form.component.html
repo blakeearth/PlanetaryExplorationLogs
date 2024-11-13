@@ -7,13 +7,13 @@
       </div>
     </div>
     <div *ngIf="discovery?.id">
-      <button class="delete" (click)="onDelete($event)">➖</button>
+      <button class="delete" (click)="delete($event)">➖</button>
     </div>
   </div>
 
   <div class="stretch">
-    <select id="discoveryTypeId" formControlName="discoveryTypeId">
-      <option [ngValue]="type.id" *ngFor="let type of discoveryTypes" (change)="onUpdate()">{{type.name}}</option>
+    <select id="discoveryTypeId" formControlName="discoveryTypeId" (change)="onUpdate()">
+      <option [ngValue]="type.id" *ngFor="let type of discoveryTypes">{{type.name}}</option>
     </select>
     <div *ngIf="discoveryForm.get('discoveryTypeId')?.invalid && discoveryForm.get('discoveryTypeId')?.touched">
       <p *ngIf="discoveryForm.get('discoveryTypeId')?.errors?.['required']">Discovery type is required.</p>

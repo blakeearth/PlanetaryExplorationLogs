@@ -46,10 +46,7 @@ export class DiscoveryFormComponent {
   }
 
   onUpdate(): void {
-    console.log("updating");
     if (this.discovery?.id && this.discoveryForm.valid) {
-      console.log("updsessseating");
-
       let discovery: DiscoveryFormDto = this.discoveryForm.value as DiscoveryFormDto;
       discovery.missionId = this.missionId;
       this.discoveryService.updateDiscovery(this.discovery.id, discovery).subscribe();
@@ -59,11 +56,14 @@ export class DiscoveryFormComponent {
     }
   }
 
-  onDelete(e?: Event) {
+  delete(e?: Event) {
     // Prevent any submission attempt before unmounting the form
     e?.preventDefault();
 
-    this.discoveryService.deleteDiscovery(this.discovery?.id ?? 0).subscribe((_v: number) => this.onCancel() );
+    this.discoveryService.deleteDiscovery(this.discovery?.id ?? 0).subscribe((_v: number) => {
+      this.onCancel();
+      this.discovery = undefined;
+    });
   }
 
   onCancel(e?: Event) {

@@ -1,11 +1,8 @@
-ol {
+.discoveries {
     padding-inline-start: 3ch;
     padding-right: 3ch;
-}
-
-li::marker {
-    font-size: 1.2rem;
-    display: inline;
+    display: flex;
+    flex-direction: column;
 }
 
 app-discovery-form {
