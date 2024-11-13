@@ -3,9 +3,10 @@
   <form *ngIf="!newDiscovery && discovery" [formGroup]="discoveryForm" (ngSubmit)="onSubmit()">
     <div class="header">
       <div class="stretch">
-        <input id="name" formControlName="name" (blur)="onUpdate()" placeholder="Name" />
+        <input id="name" formControlName="name" (blur)="onUpdate()" placeholder="Name" maxlength="150" />
         <div *ngIf="discoveryForm.get('name')?.invalid && discoveryForm.get('name')?.touched">
           <p *ngIf="discoveryForm.get('name')?.errors?.['required']">Name is required.</p>
+          <p *ngIf="discoveryForm.get('name')?.errors?.['maxlength']">Name cannot be longer than 150 characters.</p>
         </div>
       </div>
       <div *ngIf="discovery?.id">
@@ -25,20 +26,22 @@
     <div class="stretch">
       <div class="row">
         <label for="location">📍</label>
-        <input id="location" formControlName="location" (blur)="onUpdate()" placeholder="Location">
+        <input id="location" formControlName="location" (blur)="onUpdate()" placeholder="Location" maxlength="200">
       </div>
       <div *ngIf="discoveryForm.get('location')?.invalid && discoveryForm.get('location')?.touched">
         <p *ngIf="discoveryForm.get('location')?.errors?.['required']">Location is required.</p>
+        <p *ngIf="discoveryForm.get('location')?.errors?.['maxlength']">Location cannot be longer than 200 characters.</p>
       </div>
     </div>
 
     <div class="stretch">
       <div class="row">
         <label for="description">📝</label>
-        <textarea id="description" formControlName="description" (blur)="onUpdate()" placeholder="Description"></textarea>
+        <textarea id="description" formControlName="description" (blur)="onUpdate()" placeholder="Description" maxlength="500"></textarea>
       </div>
       <div *ngIf="discoveryForm.get('description')?.invalid && discoveryForm.get('description')?.touched">
         <p *ngIf="discoveryForm.get('description')?.errors?.['required']">Description is required.</p>
+        <p *ngIf="discoveryForm.get('description')?.errors?.['maxlength']">Description cannot be longer than 500 characters.</p>
       </div>
     </div>
 

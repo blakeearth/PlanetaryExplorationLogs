@@ -2,13 +2,14 @@
   <div class="header">
     <div class="stretch">
       <div class="row">
-        <input type="text" formControlName="name" (blur)="onUpdate()" placeholder="Title" />
+        <input type="text" formControlName="name" (blur)="onUpdate()" placeholder="Title" maxlength="150" />
         <div *ngIf="mission?.id">
           <button class="delete" (click)="onDelete($event)">➖</button>
         </div>
       </div>
       <div *ngIf="missionForm.get('name')?.invalid && (missionForm.get('name')?.touched || this.submissionAttempted)">
         <p *ngIf="missionForm.get('name')?.errors?.['required']">Name is required.</p>
+        <p *ngIf="missionForm.get('name')?.errors?.['maxlength']">Name cannot be longer than 150 characters.</p>
       </div>
     </div>
   </div>
@@ -23,10 +24,11 @@
   <div class="description">
     <div class="row">
       <label for="description">📝</label>
-      <textarea id="description" formControlName="description" (blur)="onUpdate()" placeholder="Description"></textarea>
+      <textarea id="description" formControlName="description" (blur)="onUpdate()" placeholder="Description" maxlength="500"></textarea>
     </div>
     <div *ngIf="missionForm.get('description')?.invalid && (missionForm.get('description')?.touched || this.submissionAttempted)">
       <p *ngIf="missionForm.get('description')?.errors?.['required']">Description is required.</p>
+      <p *ngIf="missionForm.get('description')?.errors?.['maxlength']">Description cannot be longer than 500 characters.</p>
     </div>
   </div>
 

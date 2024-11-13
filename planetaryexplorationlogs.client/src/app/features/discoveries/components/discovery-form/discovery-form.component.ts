@@ -28,10 +28,10 @@ export class DiscoveryFormComponent {
 
   ngOnInit(): void {
     this.discoveryForm = this.formBuilder.group({
-      name: [this.discovery?.name ?? '', [Validators.required]],
+      name: [this.discovery?.name ?? '', [Validators.required, Validators.maxLength(150)]],
       discoveryTypeId: [this.discovery?.discoveryTypeId ?? 0, [Validators.required]],
-      description: [this.discovery?.description ?? '', [Validators.required]],
-      location: [this.discovery?.location ?? '', [Validators.required]]
+      description: [this.discovery?.description ?? '', [Validators.required, Validators.maxLength(500)]],
+      location: [this.discovery?.location ?? '', [Validators.required, Validators.maxLength(200)]]
     });
   }
 

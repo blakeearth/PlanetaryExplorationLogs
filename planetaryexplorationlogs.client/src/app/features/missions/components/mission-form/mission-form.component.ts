@@ -29,8 +29,8 @@ export class MissionFormComponent {
   ngOnInit(): void {
     this.missionForm = this.formBuilder.group({
       date: [this.mission?.date ? this.formatDate(new Date(this.mission?.date ?? '')) : undefined, [Validators.required]],
-      name: [this.mission?.name ?? '', [Validators.required]],
-      description: [this.mission?.description ?? '', [Validators.required]],
+      name: [this.mission?.name ?? '', [Validators.required, Validators.maxLength(150)]],
+      description: [this.mission?.description ?? '', [Validators.required, Validators.maxLength(500)]],
       id: [this.mission?.id ?? 0]
     });
   }
