@@ -21,7 +21,7 @@ namespace PlanetaryExplorationLogs.API.Requests.Queries.Planets.GetPlanetMission
                     Date = m.Date,
                     Description = m.Description
                 })
-                .OrderByDescending(m => m.Date)
+                .OrderBy(m => m.Date)
                 .ToListAsync();
 
             var result = new RequestResult<List<Mission>> { Data = missions };

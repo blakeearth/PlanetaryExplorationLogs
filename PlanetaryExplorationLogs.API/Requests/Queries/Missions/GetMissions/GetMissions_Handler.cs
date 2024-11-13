@@ -16,7 +16,7 @@ namespace PlanetaryExplorationLogs.API.Requests.Queries.Missions.GetMissions
         public override async Task<RequestResult<List<Mission>>> HandleAsync()
         {
             var missions = await DbContext.Missions
-                .OrderByDescending(t => t.Date)
+                .OrderBy(t => t.Date)
                 .ToListAsync();
 
             var result = new RequestResult<List<Mission>> { Data = missions };
