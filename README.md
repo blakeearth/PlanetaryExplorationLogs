@@ -16,15 +16,29 @@
 - - Explain why this isn't ideal but is a "good enough" solution for now.
 - Considered creating a constants file to store API endpoints, and though this would provide central definitions and type safety, I deleted it because it added unnecessary complexity and made the services more verbose.
 - Idea: every mission and discovery needs to be able to be added and deleted. Instead of a submission form, it might be nice to just type in a field to save it.
+
 ## 11/10/2024
 - Added the ability to retrieve a Planet from the database and display it (roughly) in the Angular app.
 - Modules -> Standalone. Angular updates.
 - Allow getting missions by planet ID? Key column
 - Should consider when to return the invalid result
+
 ## 11/11/2024
 - Finished getters. Still need to work out some validation logic - should it happen both on the client and on the server?
 
-## 11/12/24
-- TODO remove console.logs
-- TODO search for and fix TODOs
-- TODO fix folder structures for .cs files
+## 11/12/2024
+- Implemented PUT, POST, and DELETE for missions and discoveries.
+- Used (blur) and (change) hooks with Angular to automatically update the server side on changes. This will be 1) familiar to users of modern apps like Notion / Docs, and 2) faster to implement than separate viewers and editors.
+
+## 11/13/2024
+- Fixed validation.
+- Added CSS and images from Kenney.nl.
+
+## What I would do if I continued this project
+- Add unit testing
+- Combine discovery and mission forms? Make a generic version that can bind to a data model? Many similarities.
+- Consider consolidating validation to the server only instead of duplicating validation logic?
+- Create reusable validator functions on the server/API (example: lots of copied/pasted character length)
+- Is it possible to https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions-1/models-data/validation-with-the-data-annotation-validators-cs
+- Use paginated responses for large amounts of data
+- Validaiton logic is duplicated between updates and creation requests
