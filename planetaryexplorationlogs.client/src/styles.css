@@ -1,19 +1,65 @@
-html, body, app-root {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--main-background-color);
-  color: var(--main-color);
+@font-face {
+  font-family: 'Cherry Bomb';
+  src: url(/assets/cherrybomb.ttf);
 }
 
-* {
-  box-sizing: border-box;
+@font-face {
+  font-family: 'Lato';
+  src: url(/assets/lato.ttf);
 }
 
 :root {
   --main-background-color: #121212;
   --lighter-background-color: #24292E;
   --main-color: #F2E7FE;
+}
+
+
+html, body, app-root {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  font-family: "Lato";
+}
+
+app-root {
+    z-index: 2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--main-background-color);
+  color: var(--main-color);
+}
+
+body::before, body::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(2px 2px at 20% 30%, white 50%, transparent), radial-gradient(2px 2px at 40% 70%, white 50%, transparent), radial-gradient(3px 3px at 60% 20%, white 50%, transparent), radial-gradient(2px 2px at 70% 50%, white 50%, transparent);
+  animation: twinkle 2s infinite alternate;
+  z-index: 1;
+}
+
+body::after {
+  background-image: radial-gradient(3px 3px at 80% 80%, white 50%, transparent), radial-gradient(2px 2px at 50% 60%, white 50%, transparent), radial-gradient(3px 3px at 30% 40%, white 50%, transparent), radial-gradient(2px 2px at 90% 30%, white 50%, transparent);
+  animation: twinkle 3s infinite alternate-reverse;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.2;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
