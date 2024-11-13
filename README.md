@@ -36,6 +36,15 @@
 - Fixed validation.
 - Added CSS and images from Kenney.nl.
 
+## Challenges and notes to highlight
+- Initial setup: .NET + Angular in VS. Similar to React + .NET, but it was pre-built. Configuring proxy.
+- Overall approach: implement the API alongside barebones Angular client (usually one request/command at a time). Make it pretty later.
+- "app-validated-field": just use Angular Forms!
+- Design challenges
+  - Model vs. DTO: ended up that the main difference between these was whether it had an ID yet or had other objects as properties. DTOs: generally only primitive properties.
+  - Where should creating discoveries go?
+  - Requesting discoveries on a mission-by-mission basis instead of all at once
+
 ## What I would do if I continued this project
 - Add unit testing. Add documentation to the code.
 - Combine discovery and mission forms? Make a generic version that can bind to a data model? Many similarities.
