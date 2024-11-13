@@ -1,0 +1,20 @@
+ol {
+    padding-inline-start: 3ch;
+    padding-right: 3ch;
+}
+
+li::marker {
+    font-size: 1.2rem;
+    display: inline;
+}
+
+app-discovery-form {
+  display: initial;
+}
+
+.new-discovery {
+  border: none;
+  background: var(--lighter-background-color);
+  font-size: 1.2rem;
+  color: #797883;
+}

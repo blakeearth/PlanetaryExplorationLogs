@@ -1,28 +1,36 @@
 <form *ngIf="!newMission && mission" [formGroup]="missionForm" (ngSubmit)="onSubmit()">
   <div class="header">
-    <input formControlName="name" (blur)="onUpdate()"/>
-    <div *ngIf="missionForm.get('name')?.invalid && missionForm.get('name')?.touched">
-      <p *ngIf="missionForm.get('name')?.errors?.['required']">Name is required.</p>
-    </div>
-    <input type="date" formControlName="date" (blur)="onUpdate()" />
-    <div *ngIf="missionForm.get('date')?.invalid && missionForm.get('date')?.touched">
-      <p *ngIf="missionForm.get('date')?.errors?.['required']">Date is required.</p>
+    <div class="stretch">
+      <div class="row">
+        <input type="text" formControlName="name" (blur)="onUpdate()" placeholder="Title" />
+        <div *ngIf="mission?.id">
+          <button class="delete" (click)="onDelete($event)">➖</button>
+        </div>
+      </div>
+      <div *ngIf="missionForm.get('name')?.invalid && (missionForm.get('name')?.touched || this.submissionAttempted)">
+        <p *ngIf="missionForm.get('name')?.errors?.['required']">Name is required.</p>
+      </div>
     </div>
   </div>
 
   <div>
-    <label for="description">Mission Description:</label>
-    <textarea id="description" formControlName="description" (blur)="onUpdate()"></textarea>
-    <div *ngIf="missionForm.get('description')?.invalid && missionForm.get('description')?.touched">
+    <input type="date" formControlName="date" (blur)="onUpdate()" />
+    <div *ngIf="missionForm.get('date')?.invalid && (missionForm.get('date')?.touched || this.submissionAttempted)">
+      <p *ngIf="missionForm.get('date')?.errors?.['required']">Date is required.</p>
+    </div>
+  </div>
+
+  <div class="description">
+    <div class="row">
+      <label for="description">📝</label>
+      <textarea id="description" formControlName="description" (blur)="onUpdate()" placeholder="Description"></textarea>
+    </div>
+    <div *ngIf="missionForm.get('description')?.invalid && (missionForm.get('description')?.touched || this.submissionAttempted)">
       <p *ngIf="missionForm.get('description')?.errors?.['required']">Description is required.</p>
     </div>
   </div>
 
-  <div *ngIf="mission?.id">
-    <button (click)="onDelete($event)">🗑️</button>
-  </div>
-
-  <div *ngIf="!mission?.id">
+  <div *ngIf="!mission?.id" class="buttons">
     <button (click)="onCancel($event)">Cancel</button>
     <button>Submit</button>
   </div>

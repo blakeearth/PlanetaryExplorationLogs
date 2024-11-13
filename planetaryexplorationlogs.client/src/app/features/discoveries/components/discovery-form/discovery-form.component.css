@@ -1,0 +1,68 @@
+form {
+  padding: 0 1ch;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete {
+    border: none;
+}
+
+.stretch {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header input {
+  font-size: 1.2rem;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons {
+  display: flex;
+  gap: 1ch;
+}
+
+input[type="text"] {
+  width: 100%;
+}
+
+input[type="date"] {
+  font-size: 1rem;
+}
+
+input, textarea {
+  background: var(--lighter-background-color);
+  border: none;
+  font-family: Lato;
+  color: var(--main-color);
+}
+
+select, option {
+    background-color: var(--lighter-background-color);
+    max-width: fit-content;
+}
+
+input, textarea, select {
+  width: 100%;
+}

@@ -1,26 +1,50 @@
 form {
-    padding: 0 1ch;
+  padding: 0 1ch;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
+.stretch {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+}
+
+.delete {
+    border: none;
+}
+
+
 .row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.row textarea {
     width: 100%;
+}
+
+.buttons {
     display: flex;
-    align-items: center;
+    gap: 1ch;
 }
 
 .header input {
-    font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .description {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 input[type="text"] {
@@ -28,7 +52,7 @@ input[type="text"] {
 }
 
 input[type="date"] {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
 input[type="date"], textarea, input[type="text"] {

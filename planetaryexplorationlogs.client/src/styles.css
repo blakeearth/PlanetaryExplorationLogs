@@ -24,13 +24,29 @@ html, body, app-root {
   font-family: "Lato";
 }
 
-app-root {
-    z-index: 2;
-}
-
 * {
   box-sizing: border-box;
   color-scheme: dark
+}
+
+button {
+  background: var(--lighter-background-color);
+  color: var(--main-color);
+  border-radius: 2px;
+  border: 1px solid var(--main-color);
+  cursor: pointer;
+}
+
+textarea {
+    height: 1.5rem;
+}
+
+select
+{
+  background: var(--main-background-color);
+  border: 1px solid var(--main-color);
+  border-radius: 0.5ch;
+  cursor: pointer;
 }
 
 body {
@@ -51,7 +67,7 @@ body::before, body::after {
   bottom: 0;
   background-image: radial-gradient(2px 2px at 20% 30%, white 50%, transparent), radial-gradient(2px 2px at 40% 70%, white 50%, transparent), radial-gradient(3px 3px at 60% 20%, white 50%, transparent), radial-gradient(2px 2px at 70% 50%, white 50%, transparent);
   animation: twinkle 2s infinite alternate;
-  z-index: 1;
+  pointer-events: none;
 }
 
 body::after {

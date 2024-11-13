@@ -6,12 +6,14 @@
     justify-content: center;
     text-align: center;
 }
-select {
+
+#planet-name {
   font-size: 2em;
   font-family: "Cherry Bomb";
-  background-color: var(--main-background-color);
-  color: var(--main-color);
+  border-radius: 0.5ch;
   text-align: center;
-  border: none;
-  cursor: pointer;
 }
+
+  option {
+    background-color: var(--main-background-color);
+  }

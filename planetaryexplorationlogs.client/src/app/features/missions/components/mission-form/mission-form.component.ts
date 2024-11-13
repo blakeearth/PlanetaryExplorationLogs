@@ -20,6 +20,7 @@ export class MissionFormComponent {
   @Output() missionChange = new EventEmitter<Mission>();
 
   newMission: boolean = false;
+  submissionAttempted: boolean = false;
   discoveries: Discovery[] = [];
   missionForm!: FormGroup;
 
@@ -35,6 +36,7 @@ export class MissionFormComponent {
   }
 
   onSubmit(): void {
+    this.submissionAttempted = true;
     if (this.missionForm.valid) {
       let mission: MissionFormDto = this.missionForm.value as MissionFormDto;
       mission.planetId = this.planetId;
