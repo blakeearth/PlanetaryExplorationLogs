@@ -1,5 +1,5 @@
 <div class="discovery">
-  <span>☄️</span>
+  <span *ngIf="!newDiscovery && discovery">☄️</span>
   <form *ngIf="!newDiscovery && discovery" [formGroup]="discoveryForm" (ngSubmit)="onSubmit()">
     <div class="header">
       <div class="stretch">
