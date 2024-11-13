@@ -18,7 +18,6 @@ namespace PlanetaryExplorationLogs.API.Requests.Commands.Planets
 
         public override async Task<RequestResult> ValidateAsync()
         {
-            // Obviously, this is dummy validation logic. Replace it with your own.
             await Task.CompletedTask;
 
             if (string.IsNullOrEmpty(_planet.Name.Trim()))
@@ -35,7 +34,6 @@ namespace PlanetaryExplorationLogs.API.Requests.Commands.Planets
                     "The planet must have a type.");
             }
 
-            // You can also check things in the database, if needed, such as checking if a record exists
             return await ValidResultAsync();
         }
     }

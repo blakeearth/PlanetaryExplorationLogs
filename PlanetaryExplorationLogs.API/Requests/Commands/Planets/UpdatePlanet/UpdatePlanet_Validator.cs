@@ -19,7 +19,6 @@ namespace PlanetaryExplorationLogs.API.Requests.Commands.Planets.UpdatePlanet
 
         public override async Task<RequestResult> ValidateAsync()
         {
-            // Obviously, this is dummy validation logic. Replace it with your own.
             await Task.CompletedTask;
 
             if (!DbContext.Planets.Any(p => p.Id == _planet.Id))
@@ -51,7 +50,6 @@ namespace PlanetaryExplorationLogs.API.Requests.Commands.Planets.UpdatePlanet
                     errorMessage);
             }
 
-            // You can also check things in the database, if needed, such as checking if a record exists
             return await ValidResultAsync();
         }
     }

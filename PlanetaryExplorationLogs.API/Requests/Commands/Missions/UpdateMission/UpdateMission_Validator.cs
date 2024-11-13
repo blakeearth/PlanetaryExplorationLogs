@@ -21,7 +21,6 @@ namespace PlanetaryExplorationLogs.API.Requests.Commands.Missions.UpdateMission
 
         public override async Task<RequestResult> ValidateAsync()
         {
-            // Obviously, this is dummy validation logic. Replace it with your own.
             await Task.CompletedTask;
 
             if (!DbContext.Missions.Any(m => m.Id == _id))
@@ -60,7 +59,6 @@ namespace PlanetaryExplorationLogs.API.Requests.Commands.Missions.UpdateMission
                     errorMessage);
             }
 
-            // You can also check things in the database, if needed, such as checking if a record exists
             return await ValidResultAsync();
         }
     }

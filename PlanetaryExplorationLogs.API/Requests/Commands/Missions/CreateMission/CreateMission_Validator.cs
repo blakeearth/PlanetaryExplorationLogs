@@ -20,7 +20,6 @@ namespace PlanetaryExplorationLogs.API.Requests.Commands.Planets
 
         public override async Task<RequestResult> ValidateAsync()
         {
-            // Obviously, this is dummy validation logic. Replace it with your own.
             await Task.CompletedTask;
 
             if (string.IsNullOrEmpty(_mission.Name.Trim()))
@@ -59,7 +58,6 @@ namespace PlanetaryExplorationLogs.API.Requests.Commands.Planets
                     errorMessage);
             }
 
-            // You can also check things in the database, if needed, such as checking if a record exists
             return await ValidResultAsync();
         }
     }
