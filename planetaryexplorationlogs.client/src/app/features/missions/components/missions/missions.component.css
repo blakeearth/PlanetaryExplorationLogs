@@ -20,6 +20,14 @@ h2 {
   padding-left: 1ch;
 }
 
+.new-mission {
+  border: none;
+  background: var(--lighter-background-color);
+  font-size: 1.5rem;
+  color: #797883;
+}
+
+
 .missions-container {
   height: 100%;
   padding-right: 20px;

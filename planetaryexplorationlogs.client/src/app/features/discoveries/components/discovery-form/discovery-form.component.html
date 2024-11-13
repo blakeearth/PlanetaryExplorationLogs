@@ -1,47 +1,51 @@
-<form *ngIf="!newDiscovery && discovery" [formGroup]="discoveryForm" (ngSubmit)="onSubmit()">
-  <div class="header">
-    <div class="stretch">
-      <input id="name" formControlName="name" (blur)="onUpdate()" placeholder="Name" />
-      <div *ngIf="discoveryForm.get('name')?.invalid && discoveryForm.get('name')?.touched">
-        <p *ngIf="discoveryForm.get('name')?.errors?.['required']">Name is required.</p>
+<div class="discovery">
+  <span>☄️</span>
+  <form *ngIf="!newDiscovery && discovery" [formGroup]="discoveryForm" (ngSubmit)="onSubmit()">
+    <div class="header">
+      <div class="stretch">
+        <input id="name" formControlName="name" (blur)="onUpdate()" placeholder="Name" />
+        <div *ngIf="discoveryForm.get('name')?.invalid && discoveryForm.get('name')?.touched">
+          <p *ngIf="discoveryForm.get('name')?.errors?.['required']">Name is required.</p>
+        </div>
+      </div>
+      <div *ngIf="discovery?.id">
+        <button class="delete" (click)="delete($event)">➖</button>
       </div>
     </div>
-    <div *ngIf="discovery?.id">
-      <button class="delete" (click)="delete($event)">➖</button>
-    </div>
-  </div>
 
-  <div class="stretch">
-    <select id="discoveryTypeId" formControlName="discoveryTypeId" (change)="onUpdate()">
-      <option [ngValue]="type.id" *ngFor="let type of discoveryTypes">{{type.name}}</option>
-    </select>
-    <div *ngIf="discoveryForm.get('discoveryTypeId')?.invalid && discoveryForm.get('discoveryTypeId')?.touched">
-      <p *ngIf="discoveryForm.get('discoveryTypeId')?.errors?.['required']">Discovery type is required.</p>
+    <div class="stretch">
+      <select id="discoveryTypeId" formControlName="discoveryTypeId" (change)="onUpdate()">
+        <option [ngValue]="type.id" *ngFor="let type of discoveryTypes">{{type.name}}</option>
+      </select>
+      <div *ngIf="discoveryForm.get('discoveryTypeId')?.invalid && discoveryForm.get('discoveryTypeId')?.touched">
+        <p *ngIf="discoveryForm.get('discoveryTypeId')?.errors?.['required']">Discovery type is required.</p>
+      </div>
     </div>
-  </div>
 
-  <div class="stretch">
-    <div class="row">
-      <label for="location">📍</label>
-      <input id="location" formControlName="location" (blur)="onUpdate()" placeholder="Location">
+    <div class="stretch">
+      <div class="row">
+        <label for="location">📍</label>
+        <input id="location" formControlName="location" (blur)="onUpdate()" placeholder="Location">
+      </div>
+      <div *ngIf="discoveryForm.get('location')?.invalid && discoveryForm.get('location')?.touched">
+        <p *ngIf="discoveryForm.get('location')?.errors?.['required']">Location is required.</p>
+      </div>
     </div>
-    <div *ngIf="discoveryForm.get('location')?.invalid && discoveryForm.get('location')?.touched">
-      <p *ngIf="discoveryForm.get('location')?.errors?.['required']">Location is required.</p>
-    </div>
-  </div>
 
-  <div class="stretch">
-    <div class="row">
-      <label for="description">📝</label>
-      <textarea id="description" formControlName="description" (blur)="onUpdate()" placeholder="Description"></textarea>
+    <div class="stretch">
+      <div class="row">
+        <label for="description">📝</label>
+        <textarea id="description" formControlName="description" (blur)="onUpdate()" placeholder="Description"></textarea>
+      </div>
+      <div *ngIf="discoveryForm.get('description')?.invalid && discoveryForm.get('description')?.touched">
+        <p *ngIf="discoveryForm.get('description')?.errors?.['required']">Description is required.</p>
+      </div>
     </div>
-    <div *ngIf="discoveryForm.get('description')?.invalid && discoveryForm.get('description')?.touched">
-      <p *ngIf="discoveryForm.get('description')?.errors?.['required']">Description is required.</p>
-    </div>
-  </div>
 
-  <div *ngIf="!discovery?.id" class="buttons">
-    <button (click)="onCancel($event)">Cancel</button>
-    <button>Submit</button>
-  </div>
-</form>
+    <div *ngIf="!discovery?.id" class="buttons">
+      <button (click)="onCancel($event)">Cancel</button>
+      <button>Submit</button>
+    </div>
+  </form>
+
+</div>

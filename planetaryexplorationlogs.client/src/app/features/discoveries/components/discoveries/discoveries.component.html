@@ -8,7 +8,8 @@
     <div *ngIf="newDiscovery">
       <app-discovery-form [(discovery)]="newDiscovery" [missionId]="missionId" [discoveryTypes]="discoveryTypes" (discoveryChange)="onDiscoveryChange()"></app-discovery-form>
     </div>
-    <div *ngIf="!newDiscovery">
+    <div *ngIf="!newDiscovery" class="discovery">
+      <span>☄️</span>
       <button class="new-discovery" (click)="onNewDiscovery()" type="submit">Report new discovery...</button>
     </div>
   </div>

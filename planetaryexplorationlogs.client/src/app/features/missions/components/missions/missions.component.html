@@ -7,7 +7,7 @@
     </div>
 
     <div class="row">
-      <button *ngIf="!newMission" (click)="onNewMission()" type="submit">Log new mission</button>
+      <button *ngIf="!newMission" (click)="onNewMission()" type="submit" class="new-mission">Log new mission...</button>
     </div>
     <app-mission-form *ngIf="newMission" [(mission)]="newMission" [planetId]="planetId" (missionChange)="onMissionChange()"></app-mission-form>
   </div>

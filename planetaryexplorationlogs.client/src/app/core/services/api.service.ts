@@ -41,7 +41,7 @@ export class APIService {
 
   protected put<T>(url: string, data: any): Observable<T> {
     return this.http.put<RequestResult<T>>(url, data).pipe(
-      map((response: { data: any; }) => { response.data; console.log(response); return response.data }),
+      map((response: { data: any; }) => response.data ),
       catchError((error: HttpErrorResponse) => {
         this.errorHandler.handleError(error);
         throw error;

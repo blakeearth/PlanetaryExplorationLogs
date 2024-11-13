@@ -9,6 +9,14 @@ app-discovery-form {
   display: initial;
 }
 
+.discovery {
+    display: flex;
+}
+
+.discovery span {
+    pointer-events: none;
+}
+
 .new-discovery {
   border: none;
   background: var(--lighter-background-color);
